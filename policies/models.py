@@ -65,3 +65,12 @@ class MotoInsurance(models.Model):
             self.premium = 100
         else: 
             self.premium = 300
+            
+class Health(models.Model):
+    client_id = models.ForeignKey(Client, on_delete= models.CASCADE)
+    licenseType = models.TextChoices("TYPE", "A B C D E F")
+    years_of_driving = models.IntegerField(max_length=4)
+    premium = models.DecimalField(max_digits= 10, decimal_places= 2)
+    insuranceForm = models.FileField(upload_to='doc/')
+    RC_Bood = models.FileField(upload_to='doc/')
+    identityProof = models.FileField(upload_to='doc/')

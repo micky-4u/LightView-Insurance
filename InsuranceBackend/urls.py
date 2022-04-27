@@ -23,7 +23,7 @@ urlpatterns = [
     path("users/", include("administrator.urls")),
     path("clients/", include("client.urls")),
     path("products/", include("policies.urls")),
-    # path("account/", include("accounts.urls"))
+    path("account/", include("accounts.urls"))
 ]
 
 

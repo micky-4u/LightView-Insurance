@@ -1,16 +1,17 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-
-from rest_framework.decorators import api_view
+from rest_framework import generics, permissions
 from rest_framework.response import Response
+from knox.models import AuthToken
+from .serializer import RegisterSerializer, UserSerializer
 
-# Create your views here.
+# Register API
+class RegisterAPI(generics.GenericAPIView):
+    serializer_class = RegisterSerializer
 
-
-@api_view(["GET"])
-def apiOverview(request):
-    api_urls = {
-        "API": "api/",
-    }
-
-    return Response(api_urls)
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        "token": AuthToken.objects.create(user)[1]
+        })
