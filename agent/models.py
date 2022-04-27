@@ -1,10 +1,11 @@
 from django.db import models
 from datetime import timezone
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 
 class Agent(models.Model):
-    created_by = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
 
     id = models.BigAutoField(primary_key=True)
     last_name = models.CharField(max_length=100)
@@ -17,10 +18,8 @@ class Agent(models.Model):
     is_active = models.BooleanField(default=False)
     stat_date = models.DateField()
     end_date = models.DateField()
-    created_by = models.ForeignKey('auth.User', related_name='agents', on_delete=models.CASCADE)
+    #created_by = models.ForeignKey(User, related_name='agents', on_delete=models.CASCADE)
     
-    class Meta:
-        ordering = ['is_active']
 
     def __str__(self):
-        return self.last_name
+        return self.last_name 

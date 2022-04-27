@@ -7,8 +7,6 @@ class AgentSerializer(serializers.ModelSerializer):
     created_by = serializers.ReadOnlyField(source = "created_by.username")
     # clients = serializers.PrimaryKeyRelatedField(many =True, queryset = Client.objects.all())
     
-
-
     class Meta:
         model = Agent
-        fields = "__all__,"
+        fields = "__all__"

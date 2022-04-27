@@ -1,5 +1,6 @@
 from argparse import ONE_OR_MORE
 from enum import unique
+from http import client
 from itertools import product
 from operator import mod
 from pickle import TRUE
@@ -10,7 +11,7 @@ from client.models import Client
 class Products(models.Model):
     product_id = models.BigAutoField(primary_key=True, null = False, unique= TRUE)
     product_name = models.CharField(max_length= 100)
-    product_category = models.CharField(max_length=100)
+    product_category = models.TextChoices('Products', 'MOTO HOME LIFT HEALTH')
     product_discription = models.CharField(max_length= 200)
     
     def __str__(self):
@@ -49,7 +50,18 @@ class Offers(models.Model):
     def __str__(self):
         return self.offer_id
     
+    
+class MotoInsurance(models.Model):
+    client_id = models.ForeignKey(Client, on_delete= models.CASCADE)
+    licenseType = models.TextChoices("TYPE", "A B C D E F")
+    years_of_driving = models.IntegerField(max_length=4)
+    premium = models.DecimalField(max_digits= 10, decimal_places= 2)
+    insuranceForm = models.FileField(upload_to='doc/')
+    RC_Bood = models.FileField(upload_to='doc/')
+    identityProof = models.FileField(upload_to='doc/')
+
     def get_premuim(self):
-        pass
-    
-    
+        if self.years_of_driving >= 4:
+            self.premium = 100
+        else: 
+            self.premium = 300

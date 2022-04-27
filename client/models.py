@@ -17,7 +17,7 @@ class Client(models.Model):
     address = models.CharField(max_length=200, blank=True, null=True)
     is_active = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(Agent, related_name='clients', on_delete=models.CASCADE)
+    #created_by = models.ForeignKey(Agent, related_name='clients', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.last_name
+        return self.last_name 

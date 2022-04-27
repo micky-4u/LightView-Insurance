@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .models import Client
+from client.permissions import IsOwnerOrReadOnly
+
 from .serializer import ClientSerializer
 # Create your views here.
 
@@ -8,7 +10,7 @@ from .serializer import ClientSerializer
 class ClientList(generics.ListCreateAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-    
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
     
@@ -16,3 +18,4 @@ class ClientList(generics.ListCreateAPIView):
 class ClientDetails(generics.RetrieveUpdateAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
