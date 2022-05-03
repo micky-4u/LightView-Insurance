@@ -2,8 +2,8 @@ from multiprocessing import Pool
 from django.shortcuts import render
 from rest_framework import generics
 
-from .models import PolicyType,Case,Products,MotoInsurance, Offers
-from .serializers import PolicyTypeSerializer, CaseSerializer, ProductSerializer, OfferSerializer, MotoSerializer
+from .models import PolicyType,Case,Products, Offers
+from .serializers import PolicyTypeSerializer, CaseSerializer, ProductSerializer, OfferSerializer
 # Create your views here.
 
 
@@ -39,13 +39,7 @@ class OfferDetails(generics.RetrieveUpdateAPIView):
     queryset = Offers.objects.all()
     serializer_class = OfferSerializer
     
-class MotoInsuranceList(generics.ListCreateAPIView):
-    queryset = MotoInsurance.objects.all()
-    serializer_class = MotoSerializer
     
-class MotoInsuranceDetials(generics.RetrieveUpdateAPIView):
-    queryset = MotoInsurance.objects.all()
-    serializer_class = MotoSerializer
 
 
 

@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "agent",
     "policies",
     "accounts",
+    "motoInsurance",
+    "healthInsurance",
     "knox"
 ]
 

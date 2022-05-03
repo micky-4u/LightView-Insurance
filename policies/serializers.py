@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Offers, PolicyType, Products, Case, MotoInsurance
+from .models import Offers, PolicyType, Products, Case
 
 
 class OfferSerializer(serializers.ModelSerializer):
@@ -26,9 +26,4 @@ class CaseSerializer(serializers.ModelSerializer):
         model = Case
         fields = "__all__"
         
-class MotoSerializer(serializers.ModelSerializer):
-    
-    class Meta: 
-        model = MotoInsurance
-        fields = "__all__"
 
