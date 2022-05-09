@@ -1,15 +1,27 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import MotoInsurance
-from .serializers import MotoSerializer
+from .models import Claim, ApplicationDoc
+from .serializers import ClaimSerializer, MotoSerializer
 
 
 # Create your views here.
 class MotoInsuranceDetials(generics.RetrieveUpdateAPIView):
-    queryset = MotoInsurance.objects.all()
+    queryset = ApplicationDoc.objects.all()
     serializer_class = MotoSerializer
 
 
 class MotoInsuranceList(generics.ListCreateAPIView):
-    queryset = MotoInsurance.objects.all()
+    queryset = ApplicationDoc.objects.all()
     serializer_class = MotoSerializer
+
+class ClaimList(generics.ListAPIView):
+    queryset = Claim.objects.all()
+    serializer_class = ClaimSerializer
+    
+class FileClaim(generics.CreateAPIView):
+    queryset = Claim.objects.all()
+    serializer_class = ClaimSerializer
+    
+class ClaimDetails(generics.RetrieveAPIView):
+    queryset = Claim.objects.all()
+    serializer_class = ClaimSerializer
