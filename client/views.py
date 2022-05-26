@@ -13,8 +13,6 @@ class ClientList(generics.ListCreateAPIView):
     # authentication_classes = (TokenAuthentication,)
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
     
 
 class ClientDetails(generics.RetrieveUpdateAPIView):
