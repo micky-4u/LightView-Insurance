@@ -16,8 +16,6 @@ class AgentList(generics.ListCreateAPIView):
     # authentication_classes = (TokenAuthentication,)
     permission_classes = [permissions.IsAuthenticated, ]
     
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
 
 class AgentDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Agent.objects.all()

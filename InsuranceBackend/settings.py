@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "motoInsurance",
     "healthInsurance",
     "lifeInsurance",
+    "travelInsurance",
     "knox"
 ]
 
