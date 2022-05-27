@@ -12,7 +12,7 @@ from client.permissions import IsOwnerOrReadOnly
 class AgentList(generics.ListCreateAPIView):
     queryset = Agent.objects.all()
     serializer_class = AgentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     # authentication_classes = (TokenAuthentication,)
     permission_classes = [permissions.IsAuthenticated, ]
     
@@ -21,4 +21,4 @@ class AgentDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Agent.objects.all()
     serializer_class = AgentSerializer
     # authentication_classes = (TokenAuthentication,)
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

@@ -3,7 +3,9 @@ from client.models import Client
 
 # Create your models here.
 class ApplicationDoc(models.Model):
-    client_id = models.ForeignKey(Client, on_delete= models.CASCADE)
+    id = models.BigAutoField(primary_key=True)
+
+    client= models.ForeignKey(Client, related_name="client", on_delete= models.CASCADE)
     licenseType = models.TextChoices("TYPE", "A B C D E F")
     years_of_driving = models.IntegerField()
     premium = models.DecimalField(max_digits= 10, decimal_places= 2)
@@ -17,8 +19,12 @@ class ApplicationDoc(models.Model):
             self.premium = 100
         else: 
             self.premium = 300
+            
+    
 
 class Claim (models.Model):
+    id = models.BigAutoField(primary_key=True)
+
     claim_form =  models.FileField(upload_to='doc/')
     policy_documents =  models.FileField(upload_to='doc/')
     chassis_number = models.IntegerField()

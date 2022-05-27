@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import ApplicationDoc, Claim
-from .serializers import LifeSerializer, ClaimSerializer
+from .models import ApplicationDoc
+from .serializers import LifeSerializer
 
 # Create your views here.
 class LifeInsuranceList(generics.ListCreateAPIView):

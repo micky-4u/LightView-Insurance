@@ -12,11 +12,11 @@ class ClientList(generics.ListCreateAPIView):
     serializer_class = ClientSerializer
     # authentication_classes = (TokenAuthentication,)
 
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
 
 class ClientDetails(generics.RetrieveUpdateAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     # authentication_classes = (TokenAuthentication,)

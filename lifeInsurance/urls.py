@@ -2,8 +2,8 @@ from django.urls import path, include
 from .views import LifeInsuranceDetails, LifeInsuranceList
 
 urlpatterns = [
-    path('life/', LifeInsuranceList.as_view()),
-    path('life/<int:pk>', LifeInsuranceDetails.as_view()),
+    path('', LifeInsuranceList.as_view()),
+    path('<int:pk>', LifeInsuranceDetails.as_view()),
 ]
 
 urlpatterns += [

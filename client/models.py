@@ -20,4 +20,4 @@ class Client(models.Model):
     #created_by = models.ForeignKey(Agent, related_name='clients', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.last_name 
+        return self.last_name
