@@ -19,13 +19,6 @@ class ApplicationDoc(models.Model):
         default="1",
     )
     years_of_driving = models.IntegerField()
-<<<<<<< HEAD
-    insuranceForm = models.FileField(upload_to='doc/')
-    RC_Bood = models.FileField(upload_to='doc/')
-    identityProof = models.FileField(upload_to='doc/')
-            
-
-=======
     premium = models.DecimalField(max_digits=10, decimal_places=2)
     insuranceForm = models.FileField(upload_to="doc/")
     RC_Bood = models.FileField(upload_to="doc/")
@@ -37,7 +30,6 @@ class ApplicationDoc(models.Model):
             self.premium = 100
         else:
             self.premium = 300
->>>>>>> 232c550559885db31560eb58e2a06f6d5512c7c1
 
 
 class Claim(models.Model):
