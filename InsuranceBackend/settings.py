@@ -25,7 +25,7 @@ SECRET_KEY = "v9i@kqi!8dyyp@kl)=!lly3=+!6mu7utb1t8b)5&=p_3j6&ca!"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "lightviewinc.herokuapp.com"]
 
 
 # Application definition
