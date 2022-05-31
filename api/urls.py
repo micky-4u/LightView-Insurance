@@ -9,4 +9,5 @@ urlpatterns = [
     path("products/type/life/", include("lifeInsurance.urls")),
     path("products/type/health/", include("healthInsurance.urls")),
     path("products/type/moto/", include("motoInsurance.urls")),
+    path("products/type/home/", include("homeInsurance.urls")),
 ]
