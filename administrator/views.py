@@ -12,7 +12,5 @@ class UserList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated, ]
 
 class UserDetail(generics.RetrieveAPIView):
-    def getUser(self, pk):
-        pass
     queryset = User.objects.all()
     serializer_class = UserSerializer

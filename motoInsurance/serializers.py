@@ -9,6 +9,8 @@ class MotoSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ClaimSerializer(serializers.ModelSerializer):
-    model = Claim
-    fields = "__all__"
+    class Meta:
+        
+        model = Claim
+        fields = "__all__"
 

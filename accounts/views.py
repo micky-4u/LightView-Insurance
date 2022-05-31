@@ -28,7 +28,7 @@ from .serializer import RegisterSerializer, UserSerializer
     
 
 # Register API
-class RegisterAPI(generics.GenericAPIView):
+class RegisterAPI(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     queryset = User.objects.all()
 
@@ -47,5 +47,3 @@ class UserAPI(generics.RetrieveAPIView):
     # permission_classes = [permissions.IsAuthenticated, ]
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    def get_object(self):
-        return self.request.user

@@ -18,7 +18,6 @@ class Agent(models.Model):
     is_active = models.BooleanField(default=False)
     stat_date = models.DateField()
     end_date = models.DateField()
-    #created_by = models.ForeignKey(User, related_name='agents', on_delete=models.CASCADE)
     
 
     def __str__(self):

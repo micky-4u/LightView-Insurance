@@ -1,9 +1,10 @@
 from django.urls import path, include
-from .views import MotoInsuranceDetials, ClaimList, MotoInsuranceList
+from .views import MotoInsuranceDetials, ClaimList, MotoInsuranceList, ClaimDetails
 urlpatterns = [
     path("",MotoInsuranceList.as_view() ),
     path('<int:pk>',MotoInsuranceDetials.as_view() ),
-    path('claims/', ClaimList.as_view() )
+    path('claims/', ClaimList.as_view() ),
+    path('claims/<int:pk>', ClaimDetails.as_view() )
 ]
 
 urlpatterns += [

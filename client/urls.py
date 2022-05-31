@@ -8,6 +8,3 @@ urlpatterns = [
     path("<int:pk>", ClientDetails.as_view()),
 ]
 
-urlpatterns += [
-    path('auth/', include('rest_framework.urls')),
-]
