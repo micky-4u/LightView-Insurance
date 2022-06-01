@@ -27,7 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["localhost","lightviewinc.herokuapp.com"]
 
-
+#"localhost","lightviewinc.herokuapp.com"
 # Application definition
 
 INSTALLED_APPS = [

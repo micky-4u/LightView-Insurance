@@ -32,3 +32,8 @@ class ClientEdit(generics.UpdateAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
+class ClientRm(generics.DestroyAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
