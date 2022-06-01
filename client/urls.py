@@ -8,5 +8,6 @@ urlpatterns = [
     path("<int:pk>", ClientDetails.as_view()),
     path("add", ClientAdd.as_view()),
     path("edit/<int:pk>", ClientEdit.as_view()),
+    path("rm/<int:pk>", ClientEdit.as_view()),
 ]
 
