@@ -17,7 +17,7 @@ class ApplicationDoc(models.Model):
             ("6", "F"),
         ),
         default="1",
-    )
+    ) 
     years_of_driving = models.IntegerField()
     premium = models.DecimalField(max_digits=10, decimal_places=2)
     insuranceForm = models.FileField(upload_to="doc/")

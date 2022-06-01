@@ -3,43 +3,52 @@ from django.contrib.auth.models import User
 
 from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-# from knox.views import LoginView as KnoxLoginView
 from rest_framework import generics, permissions
 from rest_framework.response import Response
-# from knox.models import AuthToken
-# from knox.auth import TokenAuthentication
+from knox.models import AuthToken
+from knox.auth import TokenAuthentication
+from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializer import RegisterSerializer, UserSerializer
+from rest_framework.decorators import api_view 
+from rest_framework.views import APIView
 
 
-
-# class LoginAPI(KnoxLoginView):
-#     permission_classes = (permissions.AllowAny,)
-#     authentication_classes = (TokenAuthentication,)
+@api_view(['POST'])
+def login_api(request):
+    serializer = AuthTokenSerializer(data = request.data)
+    serializer.is_valid(raise_exception=True)
+    user = serializer.validated_data['user']
+    token = AuthToken.objects.create(user)[1]
     
-#     def post(self, request, format=None):
-#         serializer = AuthTokenSerializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         user = serializer.validated_data['user']
-#         user.save()
-
-#         login(request, user)
-        
-#         return super().post(request, format=None)
-    
+    return Response({
+        "user_info": {
+            "id": user.id,
+            "username": user.username,
+            "email": user.email
+        },
+        "token":token
+    })    
 
 # Register API
-class RegisterAPI(generics.CreateAPIView):
-    serializer_class = RegisterSerializer
-    queryset = User.objects.all()
+class RegisterAPI(APIView):
 
-    # def post(self, request, *args, **kwargs):
-    #     serializer = self.get_serializer(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     user = serializer.save()
-    #     return Response({
-    #     "user": UserSerializer(user, context=self.get_serializer_context()).data,
-    #     "token": AuthToken.objects.create(user)[1]
-    #     })
+    def post(self, request, *args, **kwargs):
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        token = AuthToken.objects.create(user)[1]
+        
+        return Response({
+        "user_info": {
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "first_name":user.first_name,
+            "last_name":user.last_name,
+        },
+        "token":token
+    })    
+
         
         
 class UserAPI(generics.RetrieveAPIView):
@@ -47,3 +56,4 @@ class UserAPI(generics.RetrieveAPIView):
     # permission_classes = [permissions.IsAuthenticated, ]
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    
