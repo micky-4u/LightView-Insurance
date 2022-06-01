@@ -7,12 +7,18 @@ from .serializers import PolicyTypeSerializer, CaseSerializer,OfferSerializer
 # Create your views here.
 
 
-class PolicyTypeList(generics.ListCreateAPIView):
+class PolicyTypeList(generics.ListAPIView):
+    queryset = PolicyType.objects.all()
+    serializer_class = PolicyTypeSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
+class PolicyTypeAdd(generics.CreateAPIView):
     queryset = PolicyType.objects.all()
     serializer_class = PolicyTypeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class PolicyTypeDetails(generics.RetrieveUpdateAPIView):
+
+class PolicyTypeDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = PolicyType.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PolicyTypeSerializer
