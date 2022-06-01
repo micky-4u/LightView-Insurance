@@ -7,16 +7,28 @@ from .serializer import ClientSerializer
 # Create your views here.
 
 
-class ClientList(generics.ListCreateAPIView):
+class ClientList(generics.ListAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-    # authentication_classes = (TokenAuthentication,)
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    
+class ClientAdd(generics.CreateAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
 
-class ClientDetails(generics.RetrieveUpdateAPIView):
+class ClientDetails(generics.RetrieveAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    # authentication_classes = (TokenAuthentication,)
+
+
+class ClientEdit(generics.UpdateAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
