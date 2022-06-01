@@ -34,18 +34,28 @@ class CaseDetails(generics.RetrieveUpdateAPIView):
     serializer_class = CaseSerializer
     
     
-class OfferList(generics.ListCreateAPIView):
+class OfferList(generics.ListAPIView):
     queryset = Offers.objects.all()
     serializer_class = OfferSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
+    
+class OfferAdd(generics.CreateAPIView):
+    queryset = Offers.objects.all()
+    serializer_class = OfferSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
     
 class OfferDetails(generics.RetrieveUpdateAPIView):
     queryset = Offers.objects.all()
     serializer_class = OfferSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
-    
+class OfferRm(generics.CreateAPIView):
+    queryset = Offers.objects.all()
+    serializer_class = OfferSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
     
 
 
