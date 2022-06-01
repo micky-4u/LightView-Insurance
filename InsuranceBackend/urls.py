@@ -15,10 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from policies.views import ProductList
 
 urlpatterns = [
-    path("", ProductList.as_view()),
     path("admin/", admin.site.urls),
     path("apis/", include("api.urls")),
 ]

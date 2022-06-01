@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Offers, PolicyType, Products, Case
+from .models import Offers, PolicyType, Case
 
 
 class OfferSerializer(serializers.ModelSerializer):
@@ -8,17 +8,13 @@ class OfferSerializer(serializers.ModelSerializer):
         model = Offers
         fields = "__all__"
         
+        
 class PolicyTypeSerializer(serializers.ModelSerializer):
     
     class Meta: 
         model = PolicyType
         fields = "__all__"
 
-class ProductSerializer(serializers.ModelSerializer):
-    
-    class Meta: 
-        model = Products
-        fields = "__all__"
         
 class CaseSerializer(serializers.ModelSerializer):
     

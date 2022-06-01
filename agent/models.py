@@ -6,19 +6,14 @@ from django.contrib.auth.models import User
 
 
 class Agent(models.Model):
-
-    id = models.BigAutoField(primary_key=True)
-    last_name = models.CharField(max_length=100)
-    other_name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete= models.CASCADE)
     phone = models.IntegerField()
     date_of_birth = models.DateField()
-    email = models.EmailField()
     details = models.CharField(max_length=300)
     address = models.CharField(max_length=200, blank=True, null=True)
     is_active = models.BooleanField(default=False)
-    stat_date = models.DateField()
-    end_date = models.DateField()
+    date_joined = models.DateField(auto_now_add=True)
     
 
     def __str__(self):
-        return self.last_name 
+        return self.user.first_name
