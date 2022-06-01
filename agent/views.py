@@ -9,16 +9,31 @@ from client.permissions import IsOwnerOrReadOnly
 # Create your views here.
 
 
-class AgentList(generics.ListCreateAPIView):
+class AgentList(generics.ListAPIView):
     queryset = Agent.objects.all()
     serializer_class = AgentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    # authentication_classes = (TokenAuthentication,)
-    permission_classes = [permissions.IsAuthenticated, ]
     
 
-class AgentDetails(generics.RetrieveUpdateDestroyAPIView):
+class AgentDetails(generics.RetrieveAPIView):
     queryset = Agent.objects.all()
     serializer_class = AgentSerializer
-    # authentication_classes = (TokenAuthentication,)
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
+
+class AgentAdd(generics.CreateAPIView):
+    queryset = Agent.objects.all()
+    serializer_class = AgentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
+
+class AgentRm(generics.DestroyAPIView):
+    queryset = Agent.objects.all()
+    serializer_class = AgentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
+    
+class AgentEdit(generics.UpdateAPIView):
+    queryset = Agent.objects.all()
+    serializer_class = AgentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
