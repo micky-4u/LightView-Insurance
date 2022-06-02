@@ -11,13 +11,12 @@ class PolicyType(models.Model):
             ("3", "HealthInsurance"),
             
         ),
-                                 )
+        )
     description = models.TextField(max_length= 100)
     has_expired = models.BooleanField()
     monthly_payment = models.DecimalField(max_digits=20, decimal_places=2)
     quarterly_payment =  models.DecimalField(max_digits=20, decimal_places=2)
     yearly_payment = models.DecimalField(max_digits=20, decimal_places=2)
-    premium = models.DecimalField(max_digits= 10, decimal_places= 2)
     terms = models.TextField(max_length=400)
     details = models.TextField(max_length=400)
     is_available =  models.CharField(max_length=100, default='Available')
@@ -38,6 +37,7 @@ class Offers(models.Model):
     is_active = models.BooleanField()
     start_date = models.DateField()
     end_date = models.DateField()
+    premium = models.PositiveIntegerField()
     
     def __str__(self):
         return self.offer_id

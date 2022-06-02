@@ -27,13 +27,14 @@ def login_api(request):
             "email": user.email
         },
         "token":token
-    })    
+    })
+    
 
 # Register API
 class RegisterAPI(APIView):
 
     def post(self, request, *args, **kwargs):
-        serializer = UserSerializer(data=request.data)
+        serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         token = AuthToken.objects.create(user)[1]
@@ -43,8 +44,8 @@ class RegisterAPI(APIView):
             "id": user.id,
             "username": user.username,
             "email": user.email,
-            "first_name":user.first_name,
-            "last_name":user.last_name,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
         },
         "token":token
     })    
