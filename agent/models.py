@@ -6,6 +6,7 @@ import uuid
 codes = uuid.uuid1()
 
 class Agent(models.Model):
+    id = models.BigAutoField(primary_key=True, unique=True)
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     phone = models.IntegerField()
     agent_code = models.IntegerField(blank=True, default= codes.time, auto_created=True)
