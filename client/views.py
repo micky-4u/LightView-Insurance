@@ -23,17 +23,20 @@ class ClientAdd(generics.CreateAPIView):
     
 
 class ClientDetails(generics.RetrieveAPIView):
+    lookup_field = "client_code"
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
 class ClientEdit(generics.UpdateAPIView):
+    lookup_field = "client_code"
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
 class ClientRm(generics.DestroyAPIView):
+    lookup_field = "client_code"
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
