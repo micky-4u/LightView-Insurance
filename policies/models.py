@@ -21,12 +21,15 @@ class PolicyType(models.Model):
     details = models.TextField(max_length=400)
     is_available =  models.CharField(max_length=100, default='Available')
     
+    def __str__(self):
+        return self.type_name
+    
 class Case(models.Model):
     case_id = models.BigAutoField(unique= True, primary_key= True)
     case_discription = models.TextField(max_length=200)
     
     def __str__(self):
-        return self.case_id
+        return self.case_discription
     
 class Offers(models.Model):
     offer_id = models.BigAutoField(primary_key=True, unique=True)
