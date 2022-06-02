@@ -33,7 +33,7 @@ class Quote(models.Model):
     
 class Application(models.Model):
     client = models.ForeignKey(Client, related_name="clients", on_delete=models.CASCADE)
-    motoinc_reg = models.PositiveIntegerField()
+    motoinc_reg =  models.IntegerField( blank=True, default= code.node, auto_created=True)
     vehicle_registration_number = models.CharField(max_length=100)
     make_of_vehicle = models.CharField(max_length=100)
     vehicle_body_type = models.CharField(max_length=100)
@@ -45,9 +45,7 @@ class Application(models.Model):
     def __str__(self):
         return self.motoinc_reg
     
-    @property
-    def get_reg_num(self):
-        self.motoinc_reg = code.node
+    
 
 
 

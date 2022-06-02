@@ -12,7 +12,7 @@ code = uuid.uuid1()
 class Client(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     phone = models.IntegerField()
-    client_code =  models.CharField(max_length=100, blank=True, default= code.node, auto_created=True)
+    client_code =  models.IntegerField( blank=True, default= code.node, auto_created=True)
     nationality = models.CharField(max_length=100)
     national_id = models.CharField(max_length=100)
     id_number = models.PositiveIntegerField()

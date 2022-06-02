@@ -47,11 +47,13 @@ class OfferAdd(generics.CreateAPIView):
 
     
 class OfferDetails(generics.RetrieveUpdateAPIView):
+    lookup_field = "offer_code"
     queryset = Offers.objects.all()
     serializer_class = OfferSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
-class OfferRm(generics.CreateAPIView):
+class OfferRm(generics.DestroyAPIView):
+    lookup_field = "offer_code"
     queryset = Offers.objects.all()
     serializer_class = OfferSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

@@ -8,7 +8,7 @@ codes = uuid.uuid1()
 class Agent(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     phone = models.IntegerField()
-    agent_code = models.CharField(max_length=100, blank=True, default= codes.time, auto_created=True)
+    agent_code = models.IntegerField(max_length=100, blank=True, default= codes.time, auto_created=True)
     date_of_birth = models.DateField()
     nationality = models.CharField(max_length=100)
     national_id = models.CharField(max_length=100)
@@ -23,4 +23,3 @@ class Agent(models.Model):
         return self.user.first_name
 
 
-print(uuid.uuid1().time)
