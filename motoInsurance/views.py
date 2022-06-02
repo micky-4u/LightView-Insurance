@@ -11,6 +11,7 @@ class MotoInsuranceDetials(generics.RetrieveUpdateAPIView):
 
 
 class MotoInsuranceList(generics.ListCreateAPIView):
+    lookup_field = "motoinc_reg"
     queryset = Application.objects.all()
     serializer_class = MotoSerializer
 
@@ -22,6 +23,6 @@ class ClaimDetails(generics.RetrieveAPIView):
     queryset = Claim.objects.all()
     serializer_class = ClaimSerializer
     
-class Quote(generics.CreateAPIView):
+class Quote(generics.ListCreateAPIView):
     queryset = Quote.objects.all()
     serializer_class = ClaimSerializer

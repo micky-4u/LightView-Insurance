@@ -2,10 +2,14 @@ from locale import currency
 from django.db import models
 
 from client.models import Client
+import uuid
 
+code = uuid.uuid1()
 # Create your models here.
 class ApplicationDocs(models.Model):
     id = models.BigIntegerField(primary_key=True, unique=True)
+    homeinc_reg =  models.IntegerField( blank=True, default= code.node, auto_created=True)
+
     client = models.ForeignKey(Client, related_name="hclient", on_delete=models.CASCADE)
     propertyDoc = models.FileField(upload_to="doc/")
     buildingType = models.CharField(
@@ -28,14 +32,14 @@ class ApplicationDocs(models.Model):
 
 class Claim(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
-    claim_form = models.FileField(upload_to="doc/")
-    policy_documents = models.FileField(upload_to="doc/")
+    # claim_form = models.FileField(upload_to="doc/")
+    # policy_documents = models.FileField(upload_to="doc/")
     chassis_number = models.IntegerField()
     loss_incured = models.DecimalField(max_digits=10, decimal_places=2)
-    propertyRateReceipt = models.FileField(upload_to="doc/")
+    # propertyRateReceipt = models.FileField(upload_to="doc/")
     repair_bill = models.DecimalField(max_digits=10, decimal_places=2)
-    surveyor_report = models.FileField(upload_to="doc/")
-    police_nonTracable_cet = models.FileField(upload_to="doc/")
-    accident_case = models.FileField(upload_to="doc/")
-    witness = models.FileField(upload_to="doc/")
+    # surveyor_report = models.FileField(upload_to="doc/")
+    claim_docs= models.FileField(upload_to="doc/")
+    witness = models.CharField(max_length=100)
     claim_ref = models.IntegerField()
+    accident_case = models.CharField(max_length=300, blank=True)

@@ -5,9 +5,9 @@ from .views import MotoInsuranceDetials, ClaimList, MotoInsuranceList, ClaimDeta
 urlpatterns = [
     path("",MotoInsuranceList.as_view() ),
     path('<int:pk>',MotoInsuranceDetials.as_view() ),
-    path('claims/', ClaimList.as_view() ),
+    path('claims', ClaimList.as_view() ),
     path('claims/<int:pk>', ClaimDetails.as_view() ),
-    path('quote/', Quote.as_view() )
+    path('quote', Quote.as_view() )
 ]
 
 urlpatterns += [
