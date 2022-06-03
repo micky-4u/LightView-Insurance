@@ -9,7 +9,7 @@ from rest_framework import permissions
 from .serializer import RegisterSerializer
 from knox.models import AuthToken
 from rest_framework.response import Response
-
+from rest_framework import status
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
@@ -29,18 +29,20 @@ class RegisterAPI(APIView):
     
     def post(self, request, *args, **kwargs):
         serializer = RegisterSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        token = AuthToken.objects.create(user)[1]
         
-        return Response({
-        "user_info": {
-            "id": user.id,
-            "username": user.username,
-            "email": user.email,
-            "first_name": user.first_name,
-            "last_name": user.last_name,
-        },
-        "token":token
-    })    
+        if serializer.is_valid(raise_exception=True):
+            user = serializer.save()
+            token = AuthToken.objects.create(user)[1]
+            
+            return Response({
+            "user_info": {
+                "id": user.id,
+                "username": user.username,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+            },
+            "token":token
+        }, status=status.HTTP_201_CREATED) 
+        return  Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

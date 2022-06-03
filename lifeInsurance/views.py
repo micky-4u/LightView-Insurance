@@ -9,6 +9,7 @@ class LifeInsuranceList(generics.ListCreateAPIView):
     serializer_class = LifeSerializer
     
 class LifeInsuranceDetails(generics.RetrieveUpdateAPIView):
+    lookup_field = "lifeinc_reg"
     queryset = ApplicationDoc.objects.all()
     serializer_class = LifeSerializer
 

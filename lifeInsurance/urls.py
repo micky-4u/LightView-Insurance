@@ -3,7 +3,7 @@ from .views import LifeInsuranceDetails, LifeInsuranceList
 
 urlpatterns = [
     path('', LifeInsuranceList.as_view()),
-    path('<int:pk>', LifeInsuranceDetails.as_view()),
+    path('<int:lifeinc_reg>', LifeInsuranceDetails.as_view()),
 ]
 
 urlpatterns += [
