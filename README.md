@@ -45,8 +45,8 @@ This project is an insurance application built using Django, designed to manage 
 
 
 3. Create an environment
- ```bash
- python3 -m venv env
+```bash
+python3 -m venv env
 
 
 
