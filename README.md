@@ -35,4 +35,30 @@ This project is an insurance application built using Django, designed to manage 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/insurance-application.git
+   git clone https://github.com/micky-4u/LightView-Insurance.git
+
+
+2. Navigate to the project
+   ```bash
+   cd LightView-Insurance
+   
+3. Create an environment 
+```bash 
+python3 -m venv env
+
+4. Activate the environment
+```bash
+source env/bin/activate
+
+5. Install all requirement
+```bash
+pip install -r requirements.txt
+
+6. Create a super user
+```bash
+python manage.py createsuperuser
+
+7. Start the appliation on your local machine
+```bash
+python manage.py runserver
+
