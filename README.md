@@ -41,24 +41,35 @@ This project is an insurance application built using Django, designed to manage 
 2. Navigate to the project
   ```bash
    cd LightView-Insurance
-   
-4. Create an environment
-   
-python3 -m venv env
 
-5. Activate the environment
-   
+
+
+3. Create an environment
+ ```bash
+ python3 -m venv env
+
+
+
+4. Activate the environment
+```bash
 source env/bin/activate
 
-5. Install all requirement
 
+
+5. Install all requirement
+```bash
 pip install -r requirements.txt
 
-6. Create a super user
 
+
+
+6. Create a super user
+```bash
 python manage.py createsuperuser
 
-7. Start the appliation on your local machine
 
+
+7. Start the appliation on your local machine
+```bash
 python manage.py runserver
 
