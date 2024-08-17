@@ -39,10 +39,10 @@ This project is an insurance application built using Django, designed to manage 
 
 
 2. Navigate to the project
-   
+  ```bash
    cd LightView-Insurance
    
-3. Create an environment
+4. Create an environment
    
 python3 -m venv env
 
